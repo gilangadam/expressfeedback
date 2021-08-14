@@ -1,11 +1,11 @@
 import useSWR from 'swr';
 
 import { useAuth } from '@/lib/auth';
+import Fetcher from '@/utils/fetcher';
+import SiteTable from '@/components/SiteTable';
 import EmptyState from '@/components/EmptyState';
 import DashboardShell from '@/components/DashboardShell';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
-import Fetcher from '@/utils/fetcher';
-import SiteTable from '@/components/SiteTable';
 
 const Dashboard = () => {
   const auth = useAuth();
