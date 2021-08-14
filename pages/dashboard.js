@@ -8,8 +8,8 @@ import DashboardShell from '@/components/DashboardShell';
 import SiteTableSkeleton from '@/components/SiteTableSkeleton';
 
 const Dashboard = () => {
-  const auth = useAuth();
-  const { data } = useSWR('/api/sites', Fetcher);
+  const { user } = useAuth();
+  const { data } = useSWR(user ? ['/api/sites', user.token] : null, Fetcher);
 
   if (!data) {
     return (
