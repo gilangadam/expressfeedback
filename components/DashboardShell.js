@@ -34,10 +34,8 @@ const DashboardShell = ({ children }) => {
           <Flex justifyContent="center" alignItems="center">
             {user && (
               <Button
-                as="a"
                 variant="ghost"
                 mr={2}
-                href="/"
                 onClick={() => signOut()}
                 _hover={{ bg: 'gray.100' }}
                 _active={{

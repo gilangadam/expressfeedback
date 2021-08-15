@@ -64,15 +64,17 @@ const FeedbackPage = ({ initialFeedback }) => {
       maxWidth="700px"
       margin="0 auto"
     >
-      <Box as="form" onSubmit={onSubmit}>
-        <FormControl my={8}>
-          <FormLabel htmlFor="comment">Comment</FormLabel>
-          <Input ref={inputEl} id="comment" placeholder="Leave a comment" />
-          <Button mt={4} type="submit" fontWeight="medium">
-            Add Comment
-          </Button>
-        </FormControl>
-      </Box>
+      {auth.user && (
+        <Box as="form" onSubmit={onSubmit}>
+          <FormControl my={8}>
+            <FormLabel htmlFor="comment">Comment</FormLabel>
+            <Input ref={inputEl} id="comment" placeholder="Leave a comment" />
+            <Button mt={4} type="submit" fontWeight="medium">
+              Add Comment
+            </Button>
+          </FormControl>
+        </Box>
+      )}
       {allFeedback.map((feedback) => (
         <Feedback key={feedback.id} {...feedback} />
       ))}
