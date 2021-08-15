@@ -14,7 +14,7 @@ import { useAuth } from '@/lib/auth';
 import { deleteFeedback } from '@/lib/db';
 
 const DeleteFeedbackButton = ({ feedbackId }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState();
   const cancelRef = useRef();
   const auth = useAuth();
 
