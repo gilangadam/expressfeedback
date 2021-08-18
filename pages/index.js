@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { Button, Flex, Text, Icon, Link, Stack, Box } from '@chakra-ui/core';
 
@@ -23,8 +24,8 @@ const Home = ({ allFeedback }) => {
   const auth = useAuth();
 
   return (
-    <>
-      <Box bg="gray.100" py={16}>
+    <Box bg="gray.100" py={16}>
+      <Box mb={8}>
         <Flex
           align="center"
           justify="center"
@@ -45,7 +46,7 @@ const Home = ({ allFeedback }) => {
             />
           </Head>
           <Icon color="black" name="logo" size="64px" mb={4} />
-          <Text mb={4} textAlign="justify" p={8}>
+        <Text mb={4} textAlign="justify" fontSize='lg' px={4} py={8}>
             <Text as="span" fontWeight="bold" display="inline">
               Express Feedback
             </Text>
@@ -86,14 +87,17 @@ const Home = ({ allFeedback }) => {
               View Dashboard
             </Button>
           ) : (
-            <Stack isInline>
+            <Flex
+              justify={['center', 'center', 'space-between', 'space-between']}
+              direction={['column', 'column', 'row', 'row']}
+            >
               <Button
                 onClick={(e) => auth.signInWithGitHub()}
                 backgroundColor="gray.900"
                 color="white"
                 fontWeight="medium"
                 leftIcon="github"
-                mt={4}
+                mt={[0, 4, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'gray.700' }}
                 _active={{
@@ -110,7 +114,8 @@ const Home = ({ allFeedback }) => {
                 variant="outline"
                 fontWeight="medium"
                 leftIcon="google"
-                mt={4}
+                mt={[2, 4, 4, 4]}
+                mx={[0, 0, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'gray.100' }}
                 _active={{
@@ -127,7 +132,7 @@ const Home = ({ allFeedback }) => {
                 variant="outline"
                 fontWeight="medium"
                 leftIcon="twitter"
-                mt={4}
+                mt={[2, 4, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'blue.100' }}
                 _active={{
@@ -137,7 +142,7 @@ const Home = ({ allFeedback }) => {
               >
                 Sign In with Twitter
               </Button>
-            </Stack>
+            </Flex>
           )}
         </Flex>
       </Box>
@@ -148,13 +153,14 @@ const Home = ({ allFeedback }) => {
         maxWidth="700px"
         margin="0 auto"
         mt={8}
+        px={4}
       >
         <FeedbackLink siteId={SITE_ID} />
         {allFeedback.map((feedback) => (
           <Feedback key={feedback.id} {...feedback} />
         ))}
       </Box>
-    </>
+    </Box>
   );
 };
 
