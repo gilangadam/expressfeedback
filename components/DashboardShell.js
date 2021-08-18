@@ -5,11 +5,16 @@ import { Box, Button, Flex, Link, Avatar, Icon } from '@chakra-ui/core';
 import { useAuth } from '@/lib/auth';
 
 const DashboardShell = ({ children }) => {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Box backgroundColor="gray.100" h="100vh">
-      <Flex backgroundColor="white" mb={16} w="full">
+      <Flex
+        backgroundColor="white"
+        mb={16}
+        w="full"
+        borderTop="5px solid #0AF5F4"
+      >
         <Flex
           alignItems="center"
           justifyContent="space-between"
@@ -19,6 +24,7 @@ const DashboardShell = ({ children }) => {
           margin="0 auto"
           w="full"
           px={8}
+          h="70px"
         >
           <Flex align="center">
             <NextLink href="/" passHref>
@@ -33,18 +39,11 @@ const DashboardShell = ({ children }) => {
           </Flex>
           <Flex justifyContent="center" alignItems="center">
             {user && (
-              <Button
-                variant="ghost"
-                mr={2}
-                onClick={() => signOut()}
-                _hover={{ bg: 'gray.100' }}
-                _active={{
-                  bg: 'gray.100',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Log Out
-              </Button>
+              <NextLink href="/account" passHref>
+                <Button as="a" variant="ghost" mr={2}>
+                  Account
+                </Button>
+              </NextLink>
             )}
             <Avatar size="sm" src={user?.photoUrl} />
           </Flex>
