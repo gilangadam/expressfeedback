@@ -133,6 +133,7 @@ const Home = ({ allFeedback }) => {
                 fontWeight="medium"
                 leftIcon="twitter"
                 mt={[8, 8, 4, 4]}
+                mb={[8, 8, 0, 0]}
                 size="lg"
                 _hover={{ bg: 'blue.100' }}
                 _active={{
