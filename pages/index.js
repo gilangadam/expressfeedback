@@ -34,7 +34,6 @@ const Home = ({ allFeedback }) => {
           margin="0 auto"
         >
           <Head>
-            <title>Express Feedback</title>
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -124,7 +123,7 @@ const Home = ({ allFeedback }) => {
               <Button
                 onClick={(e) => auth.signInWithTwitter()}
                 backgroundColor="white"
-                color="blue.400"
+                color="#3BA9EE"
                 variant="outline"
                 fontWeight="medium"
                 leftIcon="twitter"
