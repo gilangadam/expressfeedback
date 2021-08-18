@@ -12,6 +12,7 @@ NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=
 FIREBASE_PRIVATE_KEY=
 FIREBASE_CLIENT_EMAIL=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 NEXT_PUBLIC_LOGFLARE_KEY=
 NEXT_PUBLIC_LOGFLARE_STREAM=
 ```
@@ -26,7 +27,6 @@ NEXT_PUBLIC_LOGFLARE_STREAM=
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Built by the guidance of [Lee Robinson](https://github.com/leerob) in [React 2025](https://react2025.com/)
-
 
 ## Getting Started
 
