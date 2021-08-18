@@ -46,7 +46,7 @@ const Home = ({ allFeedback }) => {
             />
           </Head>
           <Icon color="black" name="logo" size="64px" mb={4} />
-        <Text mb={4} textAlign="justify" fontSize='lg' px={4} py={8}>
+          <Text textAlign="justify" fontSize="lg" px={4} py={8}>
             <Text as="span" fontWeight="bold" display="inline">
               Express Feedback
             </Text>
@@ -97,7 +97,7 @@ const Home = ({ allFeedback }) => {
                 color="white"
                 fontWeight="medium"
                 leftIcon="github"
-                mt={[0, 4, 4, 4]}
+                mt={[8, 8, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'gray.700' }}
                 _active={{
@@ -114,7 +114,7 @@ const Home = ({ allFeedback }) => {
                 variant="outline"
                 fontWeight="medium"
                 leftIcon="google"
-                mt={[2, 4, 4, 4]}
+                mt={[8, 8, 4, 4]}
                 mx={[0, 0, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'gray.100' }}
@@ -132,7 +132,7 @@ const Home = ({ allFeedback }) => {
                 variant="outline"
                 fontWeight="medium"
                 leftIcon="twitter"
-                mt={[2, 4, 4, 4]}
+                mt={[8, 8, 4, 4]}
                 size="lg"
                 _hover={{ bg: 'blue.100' }}
                 _active={{
