@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -8,7 +9,7 @@ import {
 } from '@chakra-ui/core';
 
 const FeedbackTableHeader = () => (
-  <>
+  <Box ms={4}>
     <Breadcrumb>
       <BreadcrumbItem>
         <BreadcrumbLink>Feedback</BreadcrumbLink>
@@ -17,7 +18,7 @@ const FeedbackTableHeader = () => (
     <Flex justifyContent="space-between">
       <Heading mb={8}>My Feedback</Heading>
     </Flex>
-  </>
+  </Box>
 );
 
 export default FeedbackTableHeader;
