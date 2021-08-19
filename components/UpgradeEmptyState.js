@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Heading, Flex, Text } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
@@ -30,6 +30,7 @@ const UpgradeEmptyState = () => {
         backgroundColor="gray.900"
         color="white"
         fontWeight="medium"
+        mt={4}
         isLoading={isCheckoutLoading}
         _hover={{ bg: 'gray.700' }}
         _active={{
