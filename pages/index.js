@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
-import { Button, Flex, Text, Icon, Link, Stack, Box } from '@chakra-ui/core';
+import { Button, Flex, Text, Icon, Link, Box } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
 import { getAllFeedback } from '@/lib/db-admin';
 import Feedback from '@/components/Feedback';
 import FeedbackLink from '@/components/FeedbackLink';
+import LoginButtons from '@/components/LoginButtons';
 
 const SITE_ID = 'VQvaPS7zv4J7auAxHVBy';
 
@@ -39,14 +40,14 @@ const Home = ({ allFeedback }) => {
               dangerouslySetInnerHTML={{
                 __html: `
               if (document.cookie && document.cookie.includes('express-feedback-auth')) {
-                window.location.href = "/dashboard"
+                window.location.href = "/sites"
               }
               `
               }}
             />
           </Head>
-          <Icon color="black" name="logo" size="64px" mb={4} />
-          <Text textAlign="justify" fontSize="lg" px={4} py={8}>
+          <Icon color="black" name="logo" size={['48px', '64px']} mb={4} />
+          <Text textAlign="justify" fontSize={['md', 'lg']} px={4} py={8}>
             <Text as="span" fontWeight="bold" display="inline">
               Express Feedback
             </Text>
@@ -75,8 +76,8 @@ const Home = ({ allFeedback }) => {
               color="gray.900"
               variant="outline"
               fontWeight="medium"
-              href="/dashboard"
-              mt={4}
+              href="/sites"
+              mt={[8, 8, 4, 4]}
               size="lg"
               _hover={{ bg: 'gray.100' }}
               _active={{
@@ -87,63 +88,7 @@ const Home = ({ allFeedback }) => {
               View Dashboard
             </Button>
           ) : (
-            <Flex
-              justify={['center', 'center', 'space-between', 'space-between']}
-              direction={['column', 'column', 'row', 'row']}
-            >
-              <Button
-                onClick={(e) => auth.signInWithGitHub()}
-                backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                leftIcon="github"
-                mt={[8, 8, 4, 4]}
-                size="lg"
-                _hover={{ bg: 'gray.700' }}
-                _active={{
-                  bg: 'gray.800',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Sign In with GitHub
-              </Button>
-              <Button
-                onClick={(e) => auth.signInWithGoogle()}
-                backgroundColor="white"
-                color="gray.900"
-                variant="outline"
-                fontWeight="medium"
-                leftIcon="google"
-                mt={[8, 8, 4, 4]}
-                mx={[0, 0, 4, 4]}
-                size="lg"
-                _hover={{ bg: 'gray.100' }}
-                _active={{
-                  bg: 'gray.100',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Sign In with Google
-              </Button>
-              <Button
-                onClick={(e) => auth.signInWithTwitter()}
-                backgroundColor="white"
-                color="#3BA9EE"
-                variant="outline"
-                fontWeight="medium"
-                leftIcon="twitter"
-                mt={[8, 8, 4, 4]}
-                mb={[8, 8, 0, 0]}
-                size="lg"
-                _hover={{ bg: 'blue.100' }}
-                _active={{
-                  bg: 'white',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Sign In with Twitter
-              </Button>
-            </Flex>
+            <LoginButtons />
           )}
         </Flex>
       </Box>
