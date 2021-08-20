@@ -87,10 +87,11 @@ const FeedbackPage = ({ initialFeedback, site }) => {
     <DashboardShell>
       <SiteHeader siteName={site?.name} />
       <Box
+        backgroundColor="gray.100"
         display="flex"
         flexDirection="column"
         width="full"
-        maxWidth="700px"
+        maxWidth={['320px', '425px', '768px', '75%']}
         mx={4}
       >
         <Box as="form" onSubmit={onSubmit}>
@@ -104,10 +105,21 @@ const FeedbackPage = ({ initialFeedback, site }) => {
             {!loading && <LoginOrLeaveFeedback />}
           </FormControl>
         </Box>
-        {allFeedback &&
-          allFeedback.map((feedback) => (
-            <Feedback key={feedback.id} {...feedback} />
-          ))}
+        <Box
+          bg="white"
+          display="flex"
+          flexDirection="column"
+          width="full"
+          borderRadius={4}
+          px={4}
+          pt={8}
+          mb={8}
+        >
+          {allFeedback &&
+            allFeedback.map((feedback) => (
+              <Feedback key={feedback.id} {...feedback} />
+            ))}
+        </Box>
       </Box>
     </DashboardShell>
   );

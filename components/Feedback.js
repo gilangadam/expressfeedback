@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns';
 import { Box, Heading, Text, Divider } from '@chakra-ui/core';
 
 const Feedback = ({ author, text, createdAt }) => (
-  <Box borderRadius={4} maxWidth="700px" w="full">
+  <Box h="full" w="full">
     <Heading size="sm" as="h3" mb={0} color="gray.900" fontWeight="medium">
       {author}
     </Heading>

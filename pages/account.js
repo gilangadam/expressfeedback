@@ -82,9 +82,9 @@ const Account = () => {
     <DashboardShell>
       <Flex
         direction="column"
-        maxW="600px"
         align={['left', 'center']}
         margin="0 auto"
+        maxWidth={['320px', '425px', '768px']}
       >
         <Flex direction="column" align={['left', 'center']} ml={4}>
           <Avatar

@@ -25,14 +25,14 @@ const Home = ({ allFeedback }) => {
   const auth = useAuth();
 
   return (
-    <Box bg="gray.100" py={16}>
+    <Box bg="gray.100" py={16} h="100vh">
       <Box mb={8}>
         <Flex
           align="center"
           justify="center"
           as="main"
           direction="column"
-          maxW="700px"
+          maxWidth={['320px', '425px', '768px', '75%']}
           margin="0 auto"
         >
           <Head>
@@ -93,10 +93,11 @@ const Home = ({ allFeedback }) => {
         </Flex>
       </Box>
       <Box
+        bg="white"
         display="flex"
         flexDirection="column"
         width="full"
-        maxWidth="700px"
+        maxWidth={['320px', '425px', '768px']}
         margin="0 auto"
         mt={8}
         px={4}

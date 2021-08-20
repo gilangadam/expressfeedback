@@ -51,7 +51,13 @@ const DashboardShell = ({ children }) => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex margin="0 auto" direction="column" maxW="1250px" px={[0, 8, 8]}>
+      <Flex
+        backgroundColor="gray.100"
+        pb={8}
+        margin="0 auto"
+        direction="column"
+        px={[0, 8, 8]}
+      >
         {children}
       </Flex>
     </Box>
