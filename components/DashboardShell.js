@@ -57,6 +57,7 @@ const DashboardShell = ({ children }) => {
         margin="0 auto"
         direction="column"
         px={[0, 8, 8]}
+        maxW="1250px"
       >
         {children}
       </Flex>

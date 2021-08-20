@@ -25,7 +25,12 @@ const Home = ({ allFeedback }) => {
   const auth = useAuth();
 
   return (
-    <Box bg="gray.100" py={16} h="100vh">
+    <Box
+      bg="gray.100"
+      py={16}
+      minHeight="100vh"
+      h="100%"
+    >
       <Box mb={8}>
         <Flex
           align="center"
@@ -46,8 +51,14 @@ const Home = ({ allFeedback }) => {
               }}
             />
           </Head>
-          <Icon color="black" name="logo" size={['48px', '64px']} mb={4} />
-          <Text textAlign="justify" fontSize={['md', 'lg']} px={4} py={8}>
+          <Icon color="black" name="logo" size={['48px', '64px']} my={4} />
+          <Text
+            maxWidth={['320px', '425px', '768px', '1024px']}
+            textAlign="justify"
+            fontSize={['md', 'lg']}
+            px={4}
+            py={8}
+          >
             <Text as="span" fontWeight="bold" display="inline">
               Express Feedback
             </Text>
@@ -72,16 +83,16 @@ const Home = ({ allFeedback }) => {
           {auth.user ? (
             <Button
               as="a"
-              backgroundColor="white"
-              color="gray.900"
+              backgroundColor="gray.900"
+              color="white"
               variant="outline"
               fontWeight="medium"
               href="/sites"
               mt={[8, 8, 4, 4]}
               size="lg"
-              _hover={{ bg: 'gray.100' }}
+              _hover={{ bg: 'gray.700' }}
               _active={{
-                bg: 'gray.100',
+                bg: 'gray.800',
                 transform: 'scale(0.95)'
               }}
             >
@@ -97,6 +108,7 @@ const Home = ({ allFeedback }) => {
         display="flex"
         flexDirection="column"
         width="full"
+        borderRadius={4}
         maxWidth={['320px', '425px', '768px']}
         margin="0 auto"
         mt={8}
