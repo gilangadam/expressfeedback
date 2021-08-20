@@ -25,12 +25,7 @@ const Home = ({ allFeedback }) => {
   const auth = useAuth();
 
   return (
-    <Box
-      bg="gray.100"
-      py={16}
-      minHeight="100vh"
-      h="100%"
-    >
+    <Box bg="gray.100" py={16} minHeight="100vh" h="100%">
       <Box mb={8}>
         <Flex
           align="center"
@@ -103,13 +98,13 @@ const Home = ({ allFeedback }) => {
           )}
         </Flex>
       </Box>
-      <Box
+      <Flex
         bg="white"
         display="flex"
         flexDirection="column"
         width="full"
         borderRadius={4}
-        maxWidth={['320px', '425px', '768px']}
+        maxWidth={['350px', '425px', '768px']}
         margin="0 auto"
         mt={8}
         px={4}
@@ -118,7 +113,7 @@ const Home = ({ allFeedback }) => {
         {allFeedback.map((feedback) => (
           <Feedback key={feedback.id} {...feedback} />
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 };
