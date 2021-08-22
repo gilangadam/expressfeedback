@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Button, Flex, Text, Icon, Link, Box } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
-import { getAllFeedback } from '@/lib/db-admin';
+import { getAllFeedback, getSite } from '@/lib/db-admin';
 import Feedback from '@/components/Feedback';
 import FeedbackLink from '@/components/FeedbackLink';
 import LoginButtons from '@/components/LoginButtons';
@@ -12,16 +12,18 @@ const SITE_ID = 'VQvaPS7zv4J7auAxHVBy';
 
 export async function getStaticProps(context) {
   const { feedback } = await getAllFeedback(SITE_ID);
+  const { site } = await getSite(SITE_ID);
 
   return {
     props: {
-      allFeedback: feedback
+      allFeedback: feedback,
+      site
     },
     revalidate: 1
   };
 }
 
-const Home = ({ allFeedback }) => {
+const Home = ({ allFeedback, site }) => {
   const auth = useAuth();
 
   return (
@@ -104,14 +106,18 @@ const Home = ({ allFeedback }) => {
         flexDirection="column"
         width="full"
         borderRadius={4}
-        maxWidth={['350px', '425px', '768px']}
+        maxWidth={['350px', '425px', '768px', '1024px']}
         margin="0 auto"
-        mt={8}
         px={4}
       >
-        <FeedbackLink siteId={SITE_ID} />
-        {allFeedback.map((feedback) => (
-          <Feedback key={feedback.id} {...feedback} />
+        <FeedbackLink paths={[SITE_ID]} />
+        {allFeedback.map((feedback, index) => (
+          <Feedback
+            key={feedback.id}
+            settings={site?.settings}
+            isLast={index === allFeedback.length - 1}
+            {...feedback}
+          />
         ))}
       </Flex>
     </Box>

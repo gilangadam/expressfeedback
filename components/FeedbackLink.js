@@ -1,12 +1,18 @@
 import { Flex, Link } from '@chakra-ui/core';
 
-export default function FeedbackLink({ siteId }) {
+export default function FeedbackLink({ paths }) {
   return (
-    <Flex justifyContent="space-between" mb={8} width="full" mt={1}>
-      <Link fontWeight="bold" fontSize="sm" href={`/site/${siteId}`}>
+    <Flex
+      align={['flex-start', 'center']}
+      justifyContent="space-between"
+      width="full"
+      my={8}
+      direction={['column', 'row']}
+    >
+      <Link fontWeight="bold" fontSize="sm" href={`/site/${paths.join('/')}`}>
         Leave a comment →
       </Link>
-      <Link fontSize="xs" color="blackAlpha.500" href="/">
+      <Link fontSize="xs" color="blackAlpha.500" href="/" target="_blank">
         Powered by Express Feedback
       </Link>
     </Flex>
