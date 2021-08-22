@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
-import { createCheckoutSession, goToBillingPortal } from '@/lib/db';
+import { goToBillingPortal } from '@/lib/db';
 import Page from '@/components/Page';
 import DashboardShell from '@/components/DashboardShell';
 
@@ -74,9 +74,7 @@ const SettingsTable = ({ stripeRole, children }) => (
 
 const Account = () => {
   const { user, signOut } = useAuth();
-  const [isCheckoutLoading, setCheckoutLoading] = useState(false);
   const [isBillingLoading, setBillingLoading] = useState(false);
-  const isPaidAccount = user?.stripeRole !== 'free';
 
   return (
     <DashboardShell>
@@ -107,44 +105,24 @@ const Account = () => {
             <Button variant="ghost" ml={4} onClick={() => signOut()}>
               Log Out
             </Button>
-            {isPaidAccount ? (
-              <Button
-                onClick={() => {
-                  setBillingLoading(true);
-                  goToBillingPortal();
-                }}
-                backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                isLoading={isBillingLoading}
-                ml={4}
-                _hover={{ bg: 'gray.700' }}
-                _active={{
-                  bg: 'gray.800',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Manage Billing
-              </Button>
-            ) : (
-              <Button
-                onClick={() => {
-                  setCheckoutLoading(true);
-                  createCheckoutSession(user.uid);
-                }}
-                backgroundColor="gray.900"
-                color="white"
-                fontWeight="medium"
-                isLoading={isCheckoutLoading}
-                _hover={{ bg: 'gray.700' }}
-                _active={{
-                  bg: 'gray.800',
-                  transform: 'scale(0.95)'
-                }}
-              >
-                Upgrade to Starter
-              </Button>
-            )}
+            <Button
+              onClick={() => {
+                setBillingLoading(true);
+                goToBillingPortal();
+              }}
+              backgroundColor="gray.900"
+              color="white"
+              fontWeight="medium"
+              isLoading={isBillingLoading}
+              ml={4}
+              _hover={{ bg: 'gray.700' }}
+              _active={{
+                bg: 'gray.800',
+                transform: 'scale(0.95)'
+              }}
+            >
+              Manage Billing
+            </Button>
           </Flex>
         </SettingsTable>
       </Flex>
