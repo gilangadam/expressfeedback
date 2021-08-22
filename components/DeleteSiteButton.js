@@ -3,31 +3,30 @@ import { mutate } from 'swr';
 import {
   AlertDialog,
   AlertDialogBody,
+  AlertDialogContent,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogContent,
   AlertDialogOverlay,
   IconButton,
   Button
 } from '@chakra-ui/core';
-import { useAuth } from '@/lib/auth';
-import { deleteFeedback } from '@/lib/db';
 
-const DeleteFeedbackButton = ({ feedbackId }) => {
+import { deleteSite } from '@/lib/db';
+import { useAuth } from '@/lib/auth';
+
+const DeleteSiteButton = ({ siteId }) => {
   const [isOpen, setIsOpen] = useState();
   const cancelRef = useRef();
   const auth = useAuth();
 
   const onClose = () => setIsOpen(false);
   const onDelete = () => {
-    deleteFeedback(feedbackId);
+    deleteSite(siteId);
     mutate(
-      ['/api/feedback', auth.user.token],
+      ['/api/sites', auth.user.token],
       async (data) => {
         return {
-          feedback: data.feedback.filter(
-            (feedback) => feedback.id !== feedbackId
-          )
+          sites: data.sites.filter((site) => site.id !== siteId)
         };
       },
       false
@@ -38,7 +37,7 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
   return (
     <>
       <IconButton
-        aria-label="Delete Feedback"
+        aria-label="Delete Site"
         icon="delete"
         variant="link"
         variantColor="red"
@@ -52,10 +51,11 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete Feedback
+              Delete Site
             </AlertDialogHeader>
             <AlertDialogBody>
-              Are you sure? You can't undo this action afterwards.
+              Are you sure? This will also delete all feedback left on the site.
+              You can't undo this action afterwards.
             </AlertDialogBody>
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
@@ -77,4 +77,4 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
   );
 };
 
-export default DeleteFeedbackButton;
+export default DeleteSiteButton;

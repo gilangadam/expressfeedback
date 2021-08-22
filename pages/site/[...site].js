@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Button, FormControl, Input, Textarea } from '@chakra-ui/core';
 
@@ -11,8 +11,8 @@ import LoginButtons from '@/components/LoginButtons';
 import DashboardShell from '@/components/DashboardShell';
 
 export async function getStaticProps(context) {
-  const siteId = context.params.siteId;
-  const { feedback } = await getAllFeedback(siteId);
+  const [siteId, route] = context.params.site;
+  const { feedback } = await getAllFeedback(siteId, route);
   const { site } = await getSite(siteId);
 
   return {
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   const { sites } = await getAllSites();
   const paths = sites.map((site) => ({
     params: {
-      siteId: site.id.toString()
+      site: [site.id.toString()]
     }
   }));
 
@@ -43,14 +43,20 @@ const FeedbackPage = ({ initialFeedback, site }) => {
   const router = useRouter();
   const inputEl = useRef(null);
   const [allFeedback, setAllFeedback] = useState(initialFeedback);
+  const [siteId, route] = router.query.site;
+
+  useEffect(() => {
+    setAllFeedback(initialFeedback);
+  }, [initialFeedback]);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const newFeedback = {
+      siteId,
+      route: route || '/',
       author: user.name,
       authorId: user.uid,
-      siteId: router.query.siteId,
       text: inputEl.current.value,
       createdAt: new Date().toISOString(),
       provider: user.provider,
@@ -85,7 +91,12 @@ const FeedbackPage = ({ initialFeedback, site }) => {
 
   return (
     <DashboardShell>
-      <SiteHeader siteName={site?.name} />
+      <SiteHeader
+        isSiteOwner={true}
+        site={site}
+        siteId={siteId}
+        route={route}
+      />
       <Box
         backgroundColor="gray.100"
         display="flex"
@@ -116,8 +127,13 @@ const FeedbackPage = ({ initialFeedback, site }) => {
           mb={8}
         >
           {allFeedback &&
-            allFeedback.map((feedback) => (
-              <Feedback key={feedback.id} {...feedback} />
+            allFeedback.map((feedback, index) => (
+              <Feedback
+                key={feedback.id}
+                settings={site?.settings}
+                isLast={index === allFeedback.length - 1}
+                {...feedback}
+              />
             ))}
         </Box>
       </Box>
