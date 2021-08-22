@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import { Button, Flex, Text, Icon, Link, Box } from '@chakra-ui/core';
 

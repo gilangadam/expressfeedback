@@ -9,7 +9,12 @@ export default function FeedbackLink({ paths }) {
       my={8}
       direction={['column', 'row']}
     >
-      <Link fontWeight="bold" fontSize="sm" href={`/site/${paths.join('/')}`}>
+      <Link
+        fontWeight="bold"
+        fontSize="sm"
+        href={`/site/${paths.join('/')}`}
+        target="_blank"
+      >
         Leave a comment →
       </Link>
       <Link fontSize="xs" color="blackAlpha.500" href="/" target="_blank">
