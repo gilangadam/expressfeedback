@@ -14,7 +14,7 @@ const FeedbackEmptyState = () => (
     <Heading size="lg" mb={2}>
       There isn't any feedback.
     </Heading>
-    <Text mb={4}>Let’s share some site!</Text>
+    <Text mb={4}>Let’s share some sites!</Text>
   </Flex>
 );
 

@@ -5,9 +5,9 @@ import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 import { Global, css } from '@emotion/core';
 import { DefaultSeo } from 'next-seo';
 
-import { AuthProvider } from '@/lib/auth';
 import customTheme from '@/styles/theme';
 import { pageView } from '@/lib/gtag';
+import { AuthProvider } from '@/lib/auth';
 
 import SEO from 'next-seo.config';
 
