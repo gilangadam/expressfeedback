@@ -102,7 +102,7 @@ const Account = () => {
             addresses through the secure portal.
           </Text>
           <Flex justify="flex-end">
-            <Button variant="ghost" ml={4} onClick={() => signOut()}>
+            <Button id="log-out-button" variant="ghost" ml={4} onClick={() => signOut()}>
               Log Out
             </Button>
             <Button

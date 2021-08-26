@@ -8,13 +8,14 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   IconButton,
+  Box,
   Button
 } from '@chakra-ui/core';
 
 import { deleteSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
 
-const DeleteSiteButton = ({ siteId }) => {
+const DeleteSiteButton = ({ siteId, index }) => {
   const [isOpen, setIsOpen] = useState();
   const cancelRef = useRef();
   const auth = useAuth();
@@ -35,7 +36,7 @@ const DeleteSiteButton = ({ siteId }) => {
   };
 
   return (
-    <>
+    <Box id={`delete-site-button-icon-${index}`}>
       <IconButton
         aria-label="Delete Site"
         icon="delete"
@@ -62,6 +63,7 @@ const DeleteSiteButton = ({ siteId }) => {
                 Cancel
               </Button>
               <Button
+                id={`delete-site-button-confirm-${index}`}
                 fontWeight="bold"
                 variantColor="red"
                 onClick={onDelete}
@@ -73,7 +75,7 @@ const DeleteSiteButton = ({ siteId }) => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-    </>
+    </Box>
   );
 };
 
