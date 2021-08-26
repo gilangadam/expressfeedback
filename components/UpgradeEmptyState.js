@@ -21,7 +21,7 @@ const UpgradeEmptyState = () => {
       <Heading size="lg" mb={2}>
         Get feedback on your site instantly.
       </Heading>
-      <Text mb={4}>Start right now, leave the rest on us.</Text>
+      <Text mb={4}>Start right now, let us do the magic ✨</Text>
       <Button
         onClick={() => {
           setCheckoutLoading(true);
@@ -38,7 +38,7 @@ const UpgradeEmptyState = () => {
           transform: 'scale(0.95)'
         }}
       >
-        Upgrade to Starter
+        Upgrade to Premium
       </Button>
     </Flex>
   );
