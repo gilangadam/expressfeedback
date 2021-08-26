@@ -8,6 +8,7 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   IconButton,
+  Box,
   Button
 } from '@chakra-ui/core';
 
@@ -37,7 +38,7 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
   };
 
   return (
-    <>
+    <Box>
       <IconButton
         aria-label="Delete Feedback"
         icon="delete"
@@ -74,7 +75,7 @@ const DeleteFeedbackButton = ({ feedbackId }) => {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-    </>
+    </Box>
   );
 };
 

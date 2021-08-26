@@ -58,6 +58,7 @@ const FeedbackPage = () => {
     user ? (
       <Button
         type="submit"
+        id='submit-feedback'
         isDisabled={!siteData || !feedbackData}
         color="white"
         backgroundColor="gray.900"

@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/core';
 import { Table, Tr, Th } from './Table';
 import FeedbackRow from './FeedbackRow';
 
-const FeedbackTable = (props) => (
+const FeedbackTable = ({ feedback }) => (
   <Box overflowX="scroll">
     <Table w="full">
       <thead>
@@ -17,8 +17,8 @@ const FeedbackTable = (props) => (
         </Tr>
       </thead>
       <tbody>
-        {props.feedback.map((feedback) => (
-          <FeedbackRow key={feedback.id} {...feedback} />
+        {feedback.map((item) => (
+          <FeedbackRow key={item.id} {...item} />
         ))}
       </tbody>
     </Table>

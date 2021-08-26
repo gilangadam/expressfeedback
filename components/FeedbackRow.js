@@ -15,7 +15,6 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
     await updateFeedback(id, { status: isChecked ? 'pending' : 'active' });
     mutate(['/api/feedback', auth.user.token]);
   };
-
   return (
     <Box as="tr" key={id}>
       <Td fontWeight="medium">{author}</Td>
