@@ -1,9 +1,25 @@
 const puppeteer = require('puppeteer');
+const assert = require('chai').assert;
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
+await page.setViewport({ width: 1366, height: 768 });
 const navigationPromise = page.waitForNavigation();
 
+await page.goto('https://expressfeedback.vercel.app');
+
+assert.equal(
+  await page.title(),
+  'Express Feedback – The easiest way to add comments or reviews to your static site.'
+);
+await navigationPromise;
+
+await page.screenshot({ path: 'homepage.png' });
+
 await page.goto('https://expressfeedback.vercel.app/login');
+
+assert.equal(await page.title(), 'Express Feedback - Login');
+await navigationPromise;
+
 await page.type('#email', 'checkly@expressfeedback.com');
 await page.type('#password', 'checkly');
 await page.screenshot({ path: 'login.png' });
@@ -11,7 +27,10 @@ await page.screenshot({ path: 'login.png' });
 await page.waitForSelector('#login');
 await page.click('#login');
 
+await navigationPromise;
+
 await page.waitForSelector('#add-site-modal-button');
+assert.equal(await page.title(), 'Express Feedback - Dashboard');
 await page.click('#add-site-modal-button');
 
 await page.waitForSelector('#site-input');
@@ -37,6 +56,8 @@ await page.screenshot({ path: 'toast-create-site.png' });
 
 await page.waitForSelector('#site-table-link-0');
 await page.click('#site-table-link-0');
+
+await navigationPromise;
 await page.screenshot({ path: 'site-table.png' });
 
 await navigationPromise;
@@ -45,28 +66,33 @@ await page.waitForSelector('#comment');
 await page.click('#comment');
 await page.type('#comment', 'Testing via Checkly');
 
-await page.screenshot({ path: 'add-feedback.png' });
-
 await page.waitForSelector('#submit-feedback');
 await page.click('#submit-feedback');
 
 await page.waitForSelector('#feedback-link');
 await page.click('#feedback-link');
 
+await navigationPromise;
+
+assert.equal(await page.title(), 'Express Feedback - All Feedback');
+
+await navigationPromise;
+
 //toggle visibility
 await page.waitForSelector(
-  '.css-0 > .css-vfexqm > .css-v7ibj3 > .css-1qa2oqy > .css-1fh8wk'
+  '.css-0:nth-child(1) > .css-vfexqm > .css-v7ibj3 > .css-1qa2oqy > .css-1fh8wk'
 );
 await page.click(
-  '.css-0 > .css-vfexqm > .css-v7ibj3 > .css-1qa2oqy > .css-1fh8wk'
+  '.css-0:nth-child(1) > .css-vfexqm > .css-v7ibj3 > .css-1qa2oqy > .css-1fh8wk'
 );
+await navigationPromise;
 
 await page.waitForSelector('#sites-link');
 await page.click('#sites-link');
+await navigationPromise;
 
 await page.waitForSelector('#site-table-link-0');
 await page.click('#site-table-link-0');
-
 await navigationPromise;
 
 //wait for the feedback that already set to visible
@@ -119,6 +145,9 @@ await page.screenshot({ path: 'site-after-delete.png' });
 
 await page.waitForSelector('#user-link');
 await page.click('#user-link');
+
+await navigationPromise;
+assert.equal(await page.title(), 'Express Feedback - Account');
 
 await navigationPromise;
 await page.screenshot({ path: 'account.png' });
