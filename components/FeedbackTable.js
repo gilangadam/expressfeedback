@@ -9,7 +9,7 @@ const FeedbackTable = ({ feedback }) => (
     <Table w="full">
       <thead>
         <Tr>
-          <Th>Name</Th>
+          <Th minW="150px">Name</Th>
           <Th>Feedback</Th>
           <Th>Route</Th>
           <Th>Visible</Th>
