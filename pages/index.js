@@ -3,10 +3,10 @@ import { Button, Flex, Text, Icon, Link, Box } from '@chakra-ui/core';
 
 import { useAuth } from '@/lib/auth';
 import { getAllFeedback, getSite } from '@/lib/db-admin';
+import Footer from '@/components/Footer';
 import Feedback from '@/components/Feedback';
 import FeedbackLink from '@/components/FeedbackLink';
 import LoginButtons from '@/components/LoginButtons';
-import Footer from '@/components/Footer';
 
 const SITE_ID = process.env.NEXT_PUBLIC_HOME_PAGE_SITE_ID;
 

@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { CSSReset, ThemeProvider } from '@chakra-ui/core';
-import { Global, css } from '@emotion/core';
-import { mdx, MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
+import { useRouter } from 'next/router';
+import { Global, css } from '@emotion/core';
+import { MDXProvider } from '@mdx-js/react';
+import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 
-import customTheme from '@/styles/theme';
-import MDXComponents from '@/components/MDXComponents';
 import { pageView } from '@/lib/gtag';
 import { AuthProvider } from '@/lib/auth';
+import customTheme from '@/styles/theme';
+import MDXComponents from '@/components/MDXComponents';
 
 import SEO from 'next-seo.config';
 
