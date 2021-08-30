@@ -20,7 +20,15 @@ const FeedbackRow = ({ id, author, text, route, status }) => {
       <Td fontWeight="medium">{author}</Td>
       <Td>{text}</Td>
       <Td>
-        <Code>{route || '/'}</Code>
+        <Code
+          maxW="150px"
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+          overflow="hidden"
+          display="inherit"
+        >
+          {route || '/'}
+        </Code>
       </Td>
       <Td>
         <Switch color="green" isChecked={isChecked} onChange={toggleFeedback} />
