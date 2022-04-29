@@ -61,7 +61,7 @@ const Home = ({ allFeedback, site }) => {
             </Text>
             {' is built by '}
             <Link
-              href="https://github.com/gilangadam"
+              href="https://github.com/async-dime"
               isExternal
               textDecoration="underline"
             >
